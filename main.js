@@ -24,9 +24,15 @@ turndownService.addRule('fencedCodeBlock', {
 
     var className = node.getAttribute('class') || ''
     var language = (className.match(/language-(\S+)/) || [null, ''])[1]
+    if (language == '') {
+      className = node.firstChild.getAttribute('class') || ''
+      language = (className.match(/language-(\S+)/) || [null, ''])[1]
+    }
+    var code = node.firstChild.textContent
+    console.log(node)
     return (
       '\n\n' + options.fence + language + '\n' +
-      node.firstChild.textContent +
+      code.replace(/\n$/, '') +
       '\n' + options.fence + '\n\n'
     )
   }
