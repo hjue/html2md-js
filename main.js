@@ -29,7 +29,6 @@ turndownService.addRule('fencedCodeBlock', {
       language = (className.match(/language-(\S+)/) || [null, ''])[1]
     }
     var code = node.firstChild.textContent
-    console.log(node)
     return (
       '\n\n' + options.fence + language + '\n' +
       code.replace(/\n$/, '') +
