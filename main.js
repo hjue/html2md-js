@@ -10,6 +10,7 @@ var turndownService = new TurndownService({
   headingStyle: 'atx',
   preformattedCode: 'true'
 })
+turndownService.keep('figure')
 turndownService.addRule('fencedCodeBlock', {
   filter: function (node, options) {
     return (
