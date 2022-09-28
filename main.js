@@ -10,7 +10,23 @@ var turndownService = new TurndownService({
   headingStyle: 'atx',
   preformattedCode: 'true'
 })
-turndownService.keep('figure')
+// turndownService.keep('figure')
+
+turndownService.addRule('figure', {
+  filter: ['figure'],
+  replacement: function (content, node, options) {
+    // console.log(node.outerHTML)
+    arr = content.trim().split('!')
+    if (arr.length == 3) {
+      arr.splice(2, 1)
+      return arr.join('!')
+    } else {
+      return content
+    }
+
+  }
+})
+
 turndownService.addRule('fencedCodeBlock', {
   filter: function (node, options) {
     return (
