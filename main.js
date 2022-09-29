@@ -11,7 +11,8 @@ var turndownService = new TurndownService({
   preformattedCode: 'true'
 })
 // turndownService.keep('figure')
-
+var turndownPluginGfm = require('turndown-plugin-gfm')
+turndownService.use(turndownPluginGfm.gfm)
 turndownService.addRule('figure', {
   filter: ['figure'],
   replacement: function (content, node, options) {
